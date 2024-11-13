@@ -1,0 +1,28 @@
+<h1>Edit <%= @blog_post.title %> </h1>
+
+<%= form_with model: @blog_post do |form| %>
+    <% if form.object.errors.any? %>
+        <div>
+            <% form.object.errors.full_messages.each do |message| %>
+            <div>
+            <%= message %>
+            </div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+
+    <div>
+        <%= form.label :body %>
+        <%= form.text_field :body %>
+    </div>
+
+    <%= form.button %>
+<% end %>
+
+
+<%= button_to "Delete", @blog_post, method: :delete %>
